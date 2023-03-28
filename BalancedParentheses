@@ -1,0 +1,35 @@
+public boolean isValid(String s) {
+
+        char[] arr = s.toCharArray();
+        Stack<Character> stack = new Stack<Character>();
+        int i = 0;
+        while( i < arr.length){
+            
+        char element = arr[i];
+        if((element == '(' || element == ('{') || element == ('[')) ){
+                stack.push(element);
+        }
+        else if (!stack.isEmpty() && element == (')') && stack.peek() == '('){
+                stack.pop();
+        } else if (!stack.isEmpty() && element == ('}') && stack.peek() == '{'){
+                stack.pop();
+        }else if (!stack.isEmpty() && element == (']') && stack.peek() == '['){
+            stack.pop();
+        }
+        else 
+        {
+            return false; // if parentheses is not balanced
+        }
+        
+            i++;
+
+        }
+
+        if(stack.isEmpty()){
+            return true; // if parenthesis is balanced
+        }
+
+        return false; 
+
+        
+    }
